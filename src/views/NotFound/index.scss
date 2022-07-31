@@ -1,0 +1,22 @@
+#notfound{
+  height: 95vh ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h1{
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+  a{
+    font-size: 24px;
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    background: #2d15ff;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  text-align: center;
+}

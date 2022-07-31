@@ -1,0 +1,11 @@
+$gradient: linear-gradient(140deg, rgb(219, 98, 65) 0%, rgb(229, 91, 141) 100%);
+
+#login{
+  background: $gradient;
+	height: 100vh;
+	overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
