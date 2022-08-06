@@ -52,6 +52,9 @@ const Hello = () => {
       </div>
       <p>Token: {token}</p>
       <button
+        style={{
+          backgroundColor: '#F24C4C',
+        }}
         onClick={() => {
           dispatch(deleteToken());
           console.log('Token deleted');
