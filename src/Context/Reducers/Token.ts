@@ -12,13 +12,13 @@ export const TokenSlice = createSlice({
   name: 'token',
   initialState,
   reducers: {
-    setToken: (state) => {
+    setToken: (state: TokenState) => {
       state.value = localStorage.getItem('token');
     },
-    deleteToken: (state) => {
+    deleteToken: (state: TokenState) => {
       state.value = null;
     },
-    modifyToken(state, action: PayloadAction<string>) {
+    modifyToken(state: TokenState, action: PayloadAction<string>) {
       state.value = action.payload;
     },
   },
