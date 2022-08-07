@@ -22,7 +22,8 @@
     "react-router-dom": "^6.3.0",
     "sass": "^1.54.0",
     "sweetalert2": "^11.4.24",
-    "sweetalert2-react-content": "^5.0.2"
+    "sweetalert2-react-content": "^5.0.2",
+    "vite-react-ts-eslint-prettier": "file:"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",
