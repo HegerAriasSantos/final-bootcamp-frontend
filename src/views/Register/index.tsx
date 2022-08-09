@@ -1,122 +1,153 @@
+import { useState } from 'react';
+import Select from 'react-select'
 import './index.scss';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-function index() {
+const index = () => {
+
+  const uri = 'https://localhost:44336/api/RegisterPerson/new-user';
+  const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('');
+  const [rolId, setRolId] = useState(0);
+  const options = [
+    { value: 1, label: 'Peluquero' },
+    { value: 2, label: 'Cliente' }
+  ];  
+  const [pass, setPass] = useState('');
+  const [buttonState, setButtonState] = useState(false);
+
+  const nameChange = (event: any) => {
+    //...
+    validateForm();
+    setName(event.target.value);
+  }
+  const lastnameChange = (event: any) => {
+    //...
+    validateForm();
+    setLastname(event.target.value);
+  }
+  const emailChange = (event: any) => {
+    //...
+    validateForm();
+    setEmail(event.target.value);
+  }
+  const phoneChange = (event: any) => {
+    //...
+    validateForm();
+    setPhone(event.target.value);
+  }
+  const usernameChange = (event: any) => {
+    //...
+    validateForm();
+    setUsername(event.target.value);
+  }
+  const rolIdChange = (event: any) => {
+    //...
+    validateForm();
+    setRolId(event.value);
+  }
+  const passChange = (event: any) => {
+    //...
+    validateForm();
+    setPass(event.target.value);
+    validateForm();
+  }
+
+  const validateForm = () => {
+    //...
+    if(name != '' && lastname != '' && email != '' && phone != '' && username != '' && rolId != 0 && pass != ''){
+      console.log('datos validos');
+      setButtonState(true);
+    }
+  }
+
+  const addPerson = () => {
+    const personObj = {
+      "Name": name,
+      "LastName": lastname,
+      "Email": email,
+      "Phone": phone,
+      "Username": username,
+      "Password": pass,
+      "RoleId": rolId
+    }
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    }
+
+    const messageResponse = (value: boolean) => {
+      if(value){
+        Swal.fire(
+          'Exito',
+          'Persona agregada con exito',
+          'success'
+        )
+      }else{
+        Swal.fire(
+          'Error',
+          'That thing is still around?',
+          'error'
+        );
+      }
+    }
+
+    axios.post(uri, personObj, config)
+    .then( (resp) => {
+      console.log(resp.data.response);
+      messageResponse(resp.data.response);
+    });
+
+
+    console.log(personObj);
+  }
+
   return (
-    <section
-      className='vh-100'
-      style={{
-        backgroundColor: '#eee',
-      }}
-    >
-      <div className='container h-100'>
-        <div className='row d-flex justify-content-center align-items-center h-100'>
-          <div className='col-lg-12 col-xl-11'>
-            <div
-              className='card text-black'
-              style={{
-                borderRadius: '25px',
-              }}
-            >
-              <div className='card-body p-md-5'>
-                <div className='row justify-content-center'>
-                  <div className='col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1'>
-                    <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>Sign up</p>
-
-                    <form autoComplete='new-password' className='mx-1 mx-md-4'>
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-user fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            autoComplete='new-password'
-                            type='text'
-                            id='form3Example1c'
-                            className='form-control'
-                          />
-                          <label className='form-label' htmlFor='form3Example1c'>
-                            Your Name
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-envelope fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            autoComplete='new-password'
-                            type='email'
-                            id='form3Example3c'
-                            className='form-control'
-                          />
-                          <label className='form-label' htmlFor='form3Example3c'>
-                            Your Email
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-lock fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            autoComplete='new-password'
-                            type='password'
-                            id='form3Example4c'
-                            className='form-control'
-                          />
-                          <label className='form-label' htmlFor='form3Example4c'>
-                            Password
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-key fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            autoComplete='new-password'
-                            type='password'
-                            id='form3Example4cd'
-                            className='form-control'
-                          />
-                          <label className='form-label' htmlFor='form3Example4cd'>
-                            Repeat your password
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='form-check d-flex justify-content-center mb-5'>
-                        <input
-                          autoComplete='new-password'
-                          className='form-check-input me-2'
-                          type='checkbox'
-                          value=''
-                          id='form2Example3c'
-                        />
-                        <label className='form-check-label' htmlFor='form2Example3'>
-                          I agree all statements in <a href='#!'>Terms of service</a>
-                        </label>
-                      </div>
-
-                      <div className='d-flex justify-content-center mx-4 mb-3 mb-lg-4'>
-                        <button type='button' className='btn btn-primary btn-lg'>
-                          Register
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className='col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2'>
-                    <img
-                      src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp'
-                      className='img-fluid'
-                      alt='example placeholder'
-                    />
-                  </div>
-                </div>
-              </div>
+    <div className='container mt-5'>
+      <div className='row justify-content-center'>
+        <div className='col-md-8'>
+          <h2>Agregar Nueva Persona</h2>
+        </div>
+        <div className='col-md-8'>
+          <form method='/'>
+            <div className='form-group'>
+              <label htmlFor='name'>Nombre: </label>
+              <input className='form-control' type='text' id='name' onChange={nameChange}/>
             </div>
-          </div>
+            <div className='form-group'>
+              <label htmlFor='lastname'>Apellido: </label>
+              <input className='form-control' type='text' id='lastname' onChange={lastnameChange}/>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='email'>Email: </label>
+              <input className='form-control' type='email' id='email' onChange={emailChange}/>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='telefono'>Telefono: </label>
+              <input className='form-control' type='text' id='phone' onChange={phoneChange}/>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='username'>Nombre de usuario: </label>
+              <input className='form-control' type='text' id='username' onChange={usernameChange}/>
+            </div>
+            <div className='form-group mt-2'>
+              <label htmlFor="rolId">Rol de la Persona</label>
+              <Select options={options} id="rolId" onChange={rolIdChange}/>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='password'>Contraseña: </label>
+              <input className='form-control' type='password' id='password' onChange={passChange}/>
+            </div>
+            <div className='form-group'>
+              <button type='button' className='btn btn-primary mt-2 btn-block' disabled={!buttonState} onClick={addPerson}>Crear cuenta</button>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
