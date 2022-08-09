@@ -15,6 +15,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-react: ^7.30.0
   eslint-plugin-react-hooks: ^4.5.0
+  mdb-ui-kit: ^4.4.0
   prettier: ^2.6.2
   react: ^18.1.0
   react-dom: ^18.1.0
@@ -31,6 +32,7 @@ specifiers:
 dependencies:
   '@reduxjs/toolkit': 1.8.3_kkwg4cbsojnjnupd3btipussee
   axios: 0.27.2
+  mdb-ui-kit: 4.4.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.0.2_v7vsrdtui4d36prbwvdnlb7tpq
@@ -1991,6 +1993,10 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /mdb-ui-kit/4.4.0:
+    resolution: {integrity: sha512-cOa60S/59+1/c4+kRBSe7AMrlDeN+e83cLhFrYNTqSN9YWW7+/RfJnq7JxUIVuzEeWhANo43xPknANXa6UUxuw==}
+    dev: false
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
