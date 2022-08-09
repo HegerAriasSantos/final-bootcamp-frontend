@@ -1,23 +1,22 @@
 import "./styles.css";
 const Navbar = () => {
   return(
-    <>
+    <div className="navbar-complete">
     
-    <div id="buttons">
+    <div>
 <nav>
-    <picture> <img src="#" alt="#" /> </picture>
-			<div className='nav1'>
-				  <a href="#">Home</a>
-				  <a href="#">Dates</a>
-			</div>
-    <div className="nav2">
-        <a href="#">Login</a>
-			  <a href="#">Register</a>
+    <picture> <img src="" alt="#" /> </picture>
+			<div>
+        <ul>
+				  <li><a href="#" className="navbarHome">Home</a></li>
+          <li> <a href="#" className="navbarDates">Dates</a></li>
+          <li> <a href="#">Login</a></li>
+          <li> <a href="#">Register</a></li>
+        </ul>
     </div>
 </nav>
     </div>
-
-    </>
+    </div>
   );
 };
 
