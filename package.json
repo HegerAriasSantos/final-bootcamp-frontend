@@ -13,6 +13,7 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@babel/core": "^7.18.10",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "mdb-ui-kit": "^4.4.0",

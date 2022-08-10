@@ -1,59 +1,98 @@
-// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import routeLogo from '../../pictures/logo2.png';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { SERVER_ENDPOINT } from '~/lib/config';
+import routeLogo from '~/assets/img/logo2.png';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import './index.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { modifyToken } from '~/Context/Reducers/Token';
+import { modifyRole } from '~/Context/Reducers/Role';
 
-const index = () => {
+const Login = () => {
+  const [form, setForm] = useState({
+    Email: '',
+    Password: '',
+  });
+  const navigate = useNavigate();
   const logoSize = 48;
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const uri = 'https://localhost:44336/api/Login/iniciar-sesion';
+  const dispatch = useDispatch();
 
-  const emailData = (event: any) =>{
-    setEmail(event.target.value);
-  }
-  const passData = (event: any) =>{
-    setPass(event.target.value);
-  }
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-  const saveData = () =>{
-    console.log(`Email: ${email} - Password: ${pass}`);
-    let userObj = { "Email": email, "Password": pass };
-    axios.post(uri, userObj).then( (resp) => {
-      console.log(resp.data);
-      localStorage.setItem("token", resp.data.data.token);
-      localStorage.setItem("role", resp.data.data.rolPerson);
-    });
-
-  }
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const uri = SERVER_ENDPOINT + '/Login/iniciar-sesion';
+    const { Email, Password } = form;
+    const userObj = { Email, Password };
+    axios
+      .post(uri, userObj)
+      .then((resp) => {
+        console.log(resp.data);
+        dispatch(modifyToken(resp.data.data.token));
+        dispatch(modifyRole(resp.data.data.rolPerson));
+        navigate('/admin');
+      })
+      .catch(() => {
+        Swal.fire({
+          title: 'Error',
+          text: "Credentials don't match",
+          icon: 'error',
+        }).then(() => {
+          setForm({
+            Email: '',
+            Password: '',
+          });
+        });
+      });
+  };
 
   return (
     <div className='container'>
       <div className='row'>
         <div className='col'>
           <div className='text-start'>
-            <img src={routeLogo} alt="aquí un logo" width={logoSize} />
+            <Link to='/'>
+              <img src={routeLogo} alt='aquí un logo' width={logoSize} />
+            </Link>
           </div>
           <h2 className='fw-bold text-center py-5'>Login</h2>
 
-          <form method='/'>
+          <form onSubmit={handleSubmit}>
             <div className='mb-4'>
-              <input type="email" name='email' className='form-control' placeholder='Email:' onChange={emailData}/>
+              <input
+                type='email'
+                name='Email'
+                className='form-control'
+                placeholder='Email:'
+                onChange={handleChange}
+                value={form.Email}
+              />
             </div>
             <div className='mb-4'>
-              <input type="password" name='pass' className='form-control' placeholder='Contraseña:' onChange={passData}/>
+              <input
+                type='password'
+                name='Password'
+                className='form-control'
+                placeholder='Contraseña:'
+                onChange={handleChange}
+                value={form.Password}
+              />
             </div>
             <div className='d-grid'>
-              <button type='button' className='btn btn-primary' onClick={saveData}>Guardar</button>
+              <button type='submit' className='btn btn-primary'>
+                Guardar
+              </button>
             </div>
           </form>
         </div>
-        <div className='col bg'>
-        </div>
+        <div className='col bg'></div>
       </div>
     </div>
   );
-}
+};
 
-export default index;
+export default Login;

@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/Context';
+import { setRole } from '~/Context/Reducers/Role';
 import { setToken } from '~/Context/Reducers/Token';
 
 const Intercerptors = (props: any) => {
   const token = useSelector((state: RootState) => state.token.value);
   const dispatch = useDispatch();
   dispatch(setToken());
+  dispatch(setRole());
 
   axios.interceptors.request.use((config: any) => {
     config.headers.Authorization = `Bearer ${token}`;

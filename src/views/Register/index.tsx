@@ -1,109 +1,62 @@
 import { useState } from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
 import './index.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { SERVER_ENDPOINT } from '~/lib/config';
 
-const index = () => {
-
-  const uri = 'https://localhost:44336/api/RegisterPerson/new-user';
-  const [name, setName] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [username, setUsername] = useState('');
-  const [rolId, setRolId] = useState(0);
+const Register = () => {
+  const [form, setForm] = useState({
+    Name: '',
+    LastName: '',
+    Email: '',
+    Phone: '',
+    Username: '',
+    Password: '',
+    RoleId: 0,
+  });
   const options = [
     { value: 1, label: 'Peluquero' },
-    { value: 2, label: 'Cliente' }
-  ];  
-  const [pass, setPass] = useState('');
+    { value: 2, label: 'Cliente' },
+  ];
   const [buttonState, setButtonState] = useState(false);
 
-  const nameChange = (event: any) => {
-    //...
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     validateForm();
-    setName(event.target.value);
-  }
-  const lastnameChange = (event: any) => {
-    //...
-    validateForm();
-    setLastname(event.target.value);
-  }
-  const emailChange = (event: any) => {
-    //...
-    validateForm();
-    setEmail(event.target.value);
-  }
-  const phoneChange = (event: any) => {
-    //...
-    validateForm();
-    setPhone(event.target.value);
-  }
-  const usernameChange = (event: any) => {
-    //...
-    validateForm();
-    setUsername(event.target.value);
-  }
-  const rolIdChange = (event: any) => {
-    //...
-    validateForm();
-    setRolId(event.value);
-  }
-  const passChange = (event: any) => {
-    //...
-    validateForm();
-    setPass(event.target.value);
-    validateForm();
-  }
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+  const handleChangeRole = (e: any) => {
+    setForm({ ...form, RoleId: e.value });
+  };
 
   const validateForm = () => {
-    //...
-    if(name != '' && lastname != '' && email != '' && phone != '' && username != '' && rolId != 0 && pass != ''){
-      console.log('datos validos');
+    if (
+      form.Name != '' &&
+      form.LastName != '' &&
+      form.Email != '' &&
+      form.Phone != '' &&
+      form.Username != '' &&
+      form.RoleId != 0 &&
+      form.Password != ''
+    ) {
       setButtonState(true);
     }
-  }
+  };
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const uri = SERVER_ENDPOINT + '/RegisterPerson/new-user';
 
-  const addPerson = () => {
-    const personObj = {
-      "Name": name,
-      "LastName": lastname,
-      "Email": email,
-      "Phone": phone,
-      "Username": username,
-      "Password": pass,
-      "RoleId": rolId
-    }
-    const config = {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    }
-
-    const messageResponse = (value: boolean) => {
-      if(value){
-        Swal.fire(
-          'Exito',
-          'Persona agregada con exito',
-          'success'
-        )
-      }else{
-        Swal.fire(
-          'Error',
-          'That thing is still around?',
-          'error'
-        );
-      }
-    }
-
-    axios.post(uri, personObj, config)
-    .then( (resp) => {
-      console.log(resp.data.response);
-      messageResponse(resp.data.response);
-    });
-
-
-    console.log(personObj);
-  }
+    axios
+      .post(uri, form)
+      .then((resp) => {
+        Swal.fire('Exito', 'Persona agregada con exito', 'success');
+        console.log(resp);
+      })
+      .catch(() => {
+        Swal.fire('Error', 'That thing is still around?', 'error');
+      });
+  };
 
   return (
     <div className='container mt-5'>
@@ -112,43 +65,91 @@ const index = () => {
           <h2>Agregar Nueva Persona</h2>
         </div>
         <div className='col-md-8'>
-          <form method='/'>
+          <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label htmlFor='name'>Nombre: </label>
-              <input className='form-control' type='text' id='name' onChange={nameChange}/>
+              <input
+                className='form-control'
+                type='text'
+                id='name'
+                onChange={handleChange}
+                value={form.Name}
+                name='Name'
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='lastname'>Apellido: </label>
-              <input className='form-control' type='text' id='lastname' onChange={lastnameChange}/>
+              <input
+                className='form-control'
+                type='text'
+                id='lastname'
+                onChange={handleChange}
+                value={form.LastName}
+                name='LastName'
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='email'>Email: </label>
-              <input className='form-control' type='email' id='email' onChange={emailChange}/>
+              <input
+                className='form-control'
+                type='email'
+                id='email'
+                onChange={handleChange}
+                value={form.Email}
+                name='Email'
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='telefono'>Telefono: </label>
-              <input className='form-control' type='text' id='phone' onChange={phoneChange}/>
+              <input
+                className='form-control'
+                type='text'
+                id='phone'
+                onChange={handleChange}
+                value={form.Phone}
+                name='Phone'
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='username'>Nombre de usuario: </label>
-              <input className='form-control' type='text' id='username' onChange={usernameChange}/>
+              <input
+                className='form-control'
+                type='text'
+                id='username'
+                onChange={handleChange}
+                value={form.Username}
+                name='Username'
+              />
             </div>
             <div className='form-group mt-2'>
-              <label htmlFor="rolId">Rol de la Persona</label>
-              <Select options={options} id="rolId" onChange={rolIdChange}/>
+              <label htmlFor='rolId'>Rol de la Persona</label>
+              <Select options={options} id='rolId' onChange={handleChangeRole} />
             </div>
             <div className='form-group'>
               <label htmlFor='password'>Contraseña: </label>
-              <input className='form-control' type='password' id='password' onChange={passChange}/>
+              <input
+                className='form-control'
+                type='password'
+                id='password'
+                onChange={handleChange}
+                value={form.Password}
+                name='Password'
+              />
             </div>
             <div className='form-group'>
-              <button type='button' className='btn btn-primary mt-2 btn-block' disabled={!buttonState} onClick={addPerson}>Crear cuenta</button>
+              <button
+                type='submit'
+                className='btn btn-primary mt-2 btn-block'
+                disabled={!buttonState}
+              >
+                Crear cuenta
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default index;
+export default Register;
