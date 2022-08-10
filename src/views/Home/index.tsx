@@ -1,5 +1,7 @@
 // import Hello from '~/components/Hello';
+import "./styles2.scss";
 import Navbar from '~/components/Navbar';
+
 function App() {
   return (
     <>
@@ -48,7 +50,7 @@ function App() {
       {/* THIS IS THE FOOTER */}
     <footer>
     <h3 style={{
-      height: '50px', 
+      height: '50px',
       background:'#BDBDBD',  
       width:'100%',
       position: 'sticky', 
