@@ -1,0 +1,23 @@
+*{
+  text-align: center ;
+}
+
+a {
+    display: block;
+    width: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 150px 130px;
+    padding: 15px 30px;
+    background-color: #084A7F;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+a:hover {
+    background-color: transparent;
+    border: 1px solid #084A7F;
+    color: #084A7F;
+}

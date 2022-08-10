@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+</head>
+
+<link rel="stylesheet" href="boton.css">
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<body>
+    
+    <button onclick="AlertEliminacion()">Eliminar</button>
+
+    <script type="text/javascript">
+
+        function AlertEliminacion(){
+
+            Swal.fire({
+  title: 'Estas seguro de eliminar ?',
+  text: "No volveras a usar este producto!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, Borralo!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Eliminado!',
+      'el servicio fue eliminado correctamente.',
+      'success'
+    )
+  }
+})
+
+        }
+
+    </script>
+</body>
+</html>
