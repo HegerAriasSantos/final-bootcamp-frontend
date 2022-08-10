@@ -40,7 +40,7 @@ const Bill = () => {
         <>
             <main className="main">
                 <div className="container">
-                    <h1>Ronny Araujo</h1>
+                    <h1>Ronny Araujo Marte</h1>
                     <table>
                         <thead>
                             <th>Servicio</th>
