@@ -1,0 +1,81 @@
+.main {
+    /* border: 1px solid black; */
+    width: 90%;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    border-top: 20px solid #084A7F; 
+    width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    margin: auto;
+    /* background-color: #aaa4a4; */
+    background: #f0efef;
+
+    padding: 10px;
+
+}
+.client-contain{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0px;
+}
+table {
+    /* border: 1px solid #000; */
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 0 1em 0;
+    caption-side: top;
+}
+
+/*tbody {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    background-color: rgb(255, 255, 255);
+}*/
+th{
+    background-color: #1D79C4;
+    color:white;
+    border:#f0efef 5px solid;
+    text-align: center;
+}
+th,
+td {
+    border-collapse: collapse;
+    
+}
+
+tfoot {
+    text-align: center;
+    color: #555;
+    font-size: 1em;
+}
+
+.total td{
+    background-color: #1D79C4;
+    color:white;
+    border:#f0efef 5px solid ;
+    padding: 10px;
+}
+tbody td{
+    padding-bottom: 20px;
+}
+#total{
+    background-color: #f0efef ;
+    color:black;
+
+
+}
+
+.Buttom{
+    margin-top: 50px;
+}
