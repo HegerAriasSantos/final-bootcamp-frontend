@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import token from './Reducers/Token';
+import role from './Reducers/Role';
 
 export const store = configureStore({
   reducer: {
     token,
+    role,
   },
 });
 

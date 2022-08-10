@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
+import AdminRoutes from './AdminRoute';
+import UserRoutes from './UserRoute';
 import { lazy, Suspense, useEffect } from 'react';
 import Loading from '~/views/Loading';
 
@@ -17,10 +18,15 @@ const App = () => {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
-          {/* Protected routes */}
-          <Route path='/' element={<ProtectedRoute />}>
-            <Route element={<Home />} path='/' />
+          {/* Protected Admin routes */}
+          <Route path='/' element={<AdminRoutes />}>
+            <Route element={<Home />} path='/admin' />
           </Route>
+          {/* Protected Client routes */}
+          <Route path='/' element={<UserRoutes />}>
+            <Route element={<Home />} path='/user' />
+          </Route>
+          {/* Public routes */}
           <Route element={<Register />} path='/register' />
           <Route element={<Login />} path='/login' />
           <Route element={<NotFound />} path='*' />
