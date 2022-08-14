@@ -13,16 +13,23 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@babel/core": "^7.18.10",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "mdb-react-ui-kit": "^4.1.0",
+    "mdb-ui-kit": "^4.4.0",
     "react": "^18.1.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
+    "react-select": "^5.4.0",
     "sass": "^1.54.0",
-    "sweetalert2": "^11.4.24",
-    "sweetalert2-react-content": "^5.0.2"
+    "sweetalert2": "^11.4.26",
+    "sweetalert2-react-content": "^5.0.2",
+    "vite-react-ts-eslint-prettier": "file:"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",
@@ -36,7 +43,6 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2",
     "typescript": "^4.6.3",
     "vite": "^2.9.9",

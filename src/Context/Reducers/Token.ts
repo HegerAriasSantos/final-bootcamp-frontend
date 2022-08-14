@@ -17,9 +17,11 @@ export const TokenSlice = createSlice({
     },
     deleteToken: (state: TokenState) => {
       state.value = null;
+      localStorage.removeItem('token');
     },
     modifyToken(state: TokenState, action: PayloadAction<string>) {
       state.value = action.payload;
+      localStorage.setItem('token', action.payload);
     },
   },
 });
