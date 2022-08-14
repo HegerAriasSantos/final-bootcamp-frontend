@@ -1,14 +1,12 @@
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from 'react-bootstrap/Table';
-import logo from '~/views/Logo.png';
+import { Link } from 'react-router-dom';
 
 function InvoicesList() {
+  const id = 0;
   return (
     <>
       <div className="container">
-        <img src={logo} alt='Logo' style={{ width: '250px'}}/>
-
         <Table responsive >
           <thead>
             <tr className='table-primary'>
@@ -29,7 +27,7 @@ function InvoicesList() {
               <td>Jacob</td>
               <td>300</td>
               <td>10/09/2022</td>
-              <td>Ver detalle</td>
+              <td><Link to={`/admin/invoice/${id}`}>Ver detalle</Link></td>
             </tr>
             <tr>
 

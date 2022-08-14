@@ -3,9 +3,9 @@ import Select from 'react-select';
 import './index.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { SERVER_ENDPOINT } from '~/lib/config';
+import { ROLE_USER, SERVER_ENDPOINT } from '~/lib/config';
 
-const Register = () => {
+const Register = ({ type }: { type: string }) => {
   const [form, setForm] = useState({
     Name: '',
     LastName: '',
@@ -13,8 +13,9 @@ const Register = () => {
     Phone: '',
     Username: '',
     Password: '',
-    RoleId: 0,
+    RoleId: type === "user" ? ROLE_USER : 0,
   });
+
   const options = [
     { value: 1, label: 'Peluquero' },
     { value: 2, label: 'Cliente' },
@@ -121,7 +122,7 @@ const Register = () => {
                 name='Username'
               />
             </div>
-            <div className='form-group mt-2'>
+            <div className={type === "user" ? 'form-group mt-2 hidden' : "form-group mt-2"} >
               <label htmlFor='rolId'>Rol de la Persona</label>
               <Select options={options} id='rolId' onChange={handleChangeRole} />
             </div>

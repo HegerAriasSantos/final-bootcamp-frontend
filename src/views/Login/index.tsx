@@ -34,7 +34,7 @@ const Login = () => {
         console.log(resp.data);
         dispatch(modifyToken(resp.data.data.token));
         dispatch(modifyRole(resp.data.data.rolPerson));
-        navigate('/admin');
+        navigate('/');
       })
       .catch(() => {
         Swal.fire({
