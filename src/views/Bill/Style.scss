@@ -1,3 +1,7 @@
+
+.Logo{
+    width:300px;
+}
 .main {
     /* border: 1px solid black; */
     width: 90%;
@@ -76,6 +80,14 @@ tbody td{
 
 }
 
-.Buttom{
-    margin-top: 50px;
+table{
+    margin-bottom: 50px;
+}
+
+.Buttom2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

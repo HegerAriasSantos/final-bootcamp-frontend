@@ -8,6 +8,8 @@ const NotFound = lazy(() => import('../views/NotFound'));
 const Register = lazy(() => import('../views/Register'));
 const Login = lazy(() => import('../views/Login'));
 const Bill = lazy((() => import('../views/Bill')))
+const Billshopp = lazy((() => import('../views/Bill/ShoppingC')))
+
 
 const App = () => {
   useEffect(() => {
@@ -25,6 +27,8 @@ const App = () => {
           <Route element={<Login />} path='/login' />
           <Route element={<NotFound />} path='*' />
           <Route element={<Bill />} path='/bill' />
+          <Route element={<Billshopp />} path='/Billshopp' />
+
         </Routes>
       </Suspense>
     </BrowserRouter>
