@@ -77,8 +77,7 @@ const Invoice = () => {
                     <div className="client-contain">
                          <p className="client"><strong>Cliente:  </strong> Ronny Araujo</p>
                     </div>
-
-                   
+     
                     <table>
                         <thead>
                             <th>Service</th>
@@ -114,6 +113,4 @@ const Invoice = () => {
         </>
     )
 }
-
-
 export default Invoice
