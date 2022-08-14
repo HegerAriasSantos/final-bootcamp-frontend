@@ -10,6 +10,8 @@ const NotFound = lazy(() => import('~/views/NotFound'));
 const Register = lazy(() => import('~/views/Register'));
 const Login = lazy(() => import('~/views/Login'));
 const Services = lazy(() => import('~/views/Services'));
+const ServicesAdmin = lazy(() => import('~/views/ServicesAdmin'));
+const ServicesForm = lazy(() => import('~/components/ServicesForm'));
 const About = lazy(() => import('~/views/About'));
 const Bill = lazy((() => import('~/views/Bill')));
 const Invoices = lazy((() => import('~/views/Invoices')))
@@ -33,6 +35,9 @@ const App = () => {
             {/* Protected Admin routes */}
             <Route path='/' element={<AdminRoutes />}>
               <Route element={<Invoices />} path='/admin/invoice' />
+              <Route element={<ServicesAdmin />} path='/admin/services' />
+              <Route element={<ServicesForm type='edit' />} path='/admin/services/edit/:id' />
+              <Route element={<ServicesForm type='create' />} path='/admin/services/create' />
               <Route element={<Bill />} path='/admin/invoice/:id' />
               <Route element={<Register type="admin" />} path='/admin/register' />
             </Route>

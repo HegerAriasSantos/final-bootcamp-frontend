@@ -1,0 +1,73 @@
+.AdminForm {
+	color: #d7d7d7;
+	min-height: 100vh;
+	display: grid;
+  text-align: center;
+	justify-content: center;
+	// align-content: center;
+	h1 {
+		font-size: 2.5rem;
+		font-weight: bold;
+	}
+	form {
+    text-align: start;
+    margin-top: -150px;
+    .reseña{
+      width: 100%;
+      height: 200px;
+    }
+    .row1,.row2,.row3{
+      margin: 10px 0;
+    }
+		div {
+			display: flex;
+			gap: 10px;
+			label {
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+        width: 100%;
+				input {
+          width: 300px;
+					height: 40px;
+					border-radius: 5px;
+					padding: 0 10px;
+					outline: none;
+					background-color: #d7d7d7;
+          border: none;
+					&:hover {
+						background-color: #fff;
+					}
+				}
+				textarea {
+					background-color: #d7d7d7;
+          width: 100%;
+          height: 100%;
+          outline: none;
+          resize: none;
+					&:hover {
+						background-color: #fff;
+					}
+				}
+			}
+		}
+    .buttonContainer{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      button{
+        font-size: 1rem;
+        font-weight: bold;
+        padding: .8rem 1rem;
+        border: none;
+        border-radius: 15px;
+        background-color: #d7d7d7;
+        cursor: pointer;
+        &:hover{
+          background-color: #a0a0a0;
+        }
+      }
+    }
+	}
+}
