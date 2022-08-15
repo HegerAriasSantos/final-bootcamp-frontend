@@ -1,27 +1,24 @@
 import "./styles.scss";
-import Logo from '../../assets/img/barbero.jpeg'
+import Logo from '~/assets/img/barbero.jpeg'
+import { Link } from "react-router-dom";
+import Links from './Links';
+
 const Navbar = () => {
-  return(
-    <div>
+
+  return (
+
     <nav>
-        <input type="checkbox" id="check"></input>
-        <label className="checkbtn">
-            <i className="fas fa-bars"></i>
-        </label>
-        <a href="#" className="enlace">
+      <input type="checkbox" id="check"></input>
+      <label className="checkbtn">
+        <i className="fas fa-bars"></i>
+      </label>
 
-            <img src={Logo} className="logo"/>
-        </a>
-        <ul>
-            <li><a className="active" href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
-            <li><a href="#">About us</a></li>
-        </ul>
+      <Link to="/" className="enlace">
+        <img src={Logo} className="logo" />
+      </Link>
+
+      <Links />
     </nav>
-
-    </div>
   );
 }
 

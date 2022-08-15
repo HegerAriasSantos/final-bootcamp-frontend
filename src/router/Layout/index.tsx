@@ -1,4 +1,4 @@
-import Navbar from '../../components/Navbar';
+import Navbar from '~/components/Navbar';
 import { Outlet } from 'react-router-dom';
 
 const index = () => {
@@ -6,6 +6,7 @@ const index = () => {
     <>
       <Navbar />
       <Outlet />
+      
     </>
   );
 };
