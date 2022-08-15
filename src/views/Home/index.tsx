@@ -41,7 +41,6 @@ function App() {
       {/* THIS IS A TEST */}
 
       {/* THIS IS THE FOOTER */}
-      <Footer/>
     </div>
   );
 }
