@@ -1,3 +1,4 @@
+import Footer from "~/components/Footer";
 import "./styles.scss";
 import Logo from '~/assets/img/icono-barba.jpg'
 

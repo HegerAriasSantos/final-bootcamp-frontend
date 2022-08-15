@@ -1,5 +1,5 @@
 import "./styles.scss";
-import Logo from '~/assets/img/barbero.jpeg'
+import Logo from '~/assets/img/barbero.png'
 import { Link } from "react-router-dom";
 import Links from './Links';
 
