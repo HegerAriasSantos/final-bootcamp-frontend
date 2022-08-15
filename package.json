@@ -14,6 +14,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.10",
+    "@fullcalendar/core": "^5.11.2",
+    "@fullcalendar/daygrid": "^5.11.2",
+    "@fullcalendar/google-calendar": "^5.11.2",
+    "@fullcalendar/react": "^5.11.2",
     "@popperjs/core": "^2.11.6",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
@@ -34,6 +38,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.9",
+    "@types/react-big-calendar": "^0.38.1",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
