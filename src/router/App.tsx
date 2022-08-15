@@ -4,6 +4,7 @@ import UserRoutes from './UserRoute';
 import Layout from './Layout';
 import { lazy, Suspense, useEffect } from 'react';
 import Loading from '~/views/Loading';
+import Quotes from '~/views/Quotes';
 
 const Home = lazy(() => import('~/views/Home'));
 const NotFound = lazy(() => import('~/views/NotFound'));
@@ -31,6 +32,7 @@ const App = () => {
             <Route element={<Services />} path='/services' />
             <Route element={<Register type="user" />} path='/register' />
             <Route element={<Login />} path='/login' />
+            <Route element={<Quotes />} path='/quotes' />
 
             {/* Protected Admin routes */}
             <Route path='/' element={<AdminRoutes />}>
@@ -40,6 +42,7 @@ const App = () => {
               <Route element={<ServicesForm type='create' />} path='/admin/services/create' />
               <Route element={<Bill />} path='/admin/invoice/:id' />
               <Route element={<Register type="admin" />} path='/admin/register' />
+              {/*<Route element={<Quotes />} path='/admin/quotes' />*/}
             </Route>
             {/* Protected Client routes */}
             <Route path='/' element={<UserRoutes />}>
