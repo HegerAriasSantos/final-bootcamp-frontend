@@ -1,6 +1,8 @@
 import Footer from "~/components/Footer";
 import "./styles.scss";
 import Logo from '~/assets/img/icono-barba.jpg'
+import { Link } from "react-router-dom";
+
 
 
 
@@ -15,7 +17,10 @@ function App() {
               <div className="logo-text">
                 <h1>You need to look good and feel good! </h1>
                 <p>Make your appointment online</p>
-                <button className="buttom">Quote</button>
+                <Link to="/Services">
+                 <button className="buttom">Service</button>
+                </Link>
+               
               </div>
             </div>
           </div>
