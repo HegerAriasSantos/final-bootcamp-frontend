@@ -11,8 +11,15 @@ import { SERVER_ENDPOINT } from "~/lib/config";
 
 function index() {
   const MySwal = withReactContent(Swal);
-  const [services, setServices] = useState<Service[]>([]);
-  const [servicesFilter, setServicesFilted] = useState<Service[]>([]);
+  const [services, setServices] = useState<Service[]>([{
+    id: 1,
+    name: 'hola',
+    price: 200}]);
+  const [servicesFilter, setServicesFilted] = useState<Service[]>([{
+    id: 1,
+    name: 'hola',
+    price: 200
+  }]);
 
   const handleDelete = (e: any) => {
     MySwal.fire({
