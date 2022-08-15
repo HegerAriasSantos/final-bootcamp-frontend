@@ -1,3 +1,4 @@
+import Footer from "~/components/Footer";
 import "./styles.scss";
 
 function App() {
@@ -40,17 +41,7 @@ function App() {
       {/* THIS IS A TEST */}
 
       {/* THIS IS THE FOOTER */}
-      <footer>
-        <h3 style={{
-          height: '50px',
-          background: '#BDBDBD',
-          width: '100%',
-          position: 'sticky',
-          bottom: 0,
-          color: 'black'
-        }}> Copyright design license by react group </h3>
-      </footer>
-
+      <Footer/>
     </div>
   );
 }
