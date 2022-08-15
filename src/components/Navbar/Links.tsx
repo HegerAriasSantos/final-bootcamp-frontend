@@ -20,6 +20,7 @@ const Links = () => {
       <ul >
         <li><Link to="/" className={location.pathname == "/" ? "active" : ""} >Home</Link></li>
         <li><Link to="/admin/invoice" className={location.pathname == "/admin/invoice" ? "active" : ""} >Invoices</Link></li>
+        <li><Link to="/admin/services" className={location.pathname.includes("/admin/services") ? "active" : ""} >Services</Link></li>
         <li><Link to="/admin/quote" className={location.pathname == "/admin/quote" ? "active" : ""}>Quotes</Link></li>
         <li><Link to="/admin/register" className={location.pathname == "/admin/quote" ? "active" : ""}>Create User</Link></li>
         <li><a onClick={handleSignOut} href="#" >Sign out</a></li>
