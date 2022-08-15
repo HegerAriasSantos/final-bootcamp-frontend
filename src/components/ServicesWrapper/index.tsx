@@ -1,29 +1,29 @@
 import { Link } from "react-router-dom";
 
-function ServicesWrapper(props: { handleDelete?: any; Id?: number; Name?: string; Price?: number; }) {
+function ServicesWrapper(props: any) {
   const {
-    Id,
-    Name,
-    Price,
+    id,
+    name,
+    price,
   } = props;
 
   return (
     <tr>
       <td>
-        <p>{Id}</p>
+        <p>{id}</p>
       </td>
       <td>
-        <p>{Name}</p>
+        <p>{name}</p>
       </td>
       <td>
-        <p>{Price}</p>
+        <p>{price}</p>
       </td>
       <td>
         <div>
-          <button className='delete' id={`${Id}`} onClick={props.handleDelete}>
+          <button className='delete' id={`${id}`} onClick={props.handleDelete}>
             Borrar
           </button>
-          <Link to={`/admin/services/edit/${Id}`}>
+          <Link to={`/admin/services/edit/${id}`}>
             <button className='edit'>Editar</button>
           </Link>
         </div>

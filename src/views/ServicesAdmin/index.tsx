@@ -11,8 +11,8 @@ import { SERVER_ENDPOINT } from "~/lib/config";
 
 function index() {
   const MySwal = withReactContent(Swal);
-  const [services, setServices] = useState<Service[]>();
-  const [clientesFilted, setClienteFilted] = useState<Service[]>();
+  const [services, setServices] = useState<Service[]>([]);
+  const [servicesFilter, setServicesFilted] = useState<Service[]>([]);
 
   const handleDelete = (e: any) => {
     MySwal.fire({
@@ -26,43 +26,36 @@ function index() {
     }).then(result => {
       if (result.isConfirmed) {
         MySwal.fire("Deleted!", "Your file has been deleted.", "success");
-        // const id = e.target.id;
-        // axios.delete(`https://scrum-proyect.herokuapp.com/cliente/delete/${id}`).then(() => {
-        //   setClienteFilted(clientes.filter(video => video.id !== id));
-        // });
+        const id = e.target.id;
+        axios.delete(`${SERVER_ENDPOINT}/service/${id}`).then((res) => {
+          console.log(res);
+          setServicesFilted(services.filter(service => service.id !== res.data.data.
+            id));
+        });
       }
     });
   };
   useEffect(() => {
     axios(`${SERVER_ENDPOINT}/service`).then(res => {
       console.log(res);
-      // const orderedDatas = res.data.body.sort(function (a: { deuda: number; }, b: { deuda: number; }) {
-      //   if (a.deuda < b.deuda) {
-      //     return 1;
-      //   }
-      //   if (a.deuda > b.deuda) {
-      //     return -1;
-      //   }
-      //   return 0;
-      // });
-      // setClientes(orderedDatas);
-      // setClienteFilted(orderedDatas);
+      setServices(res.data.data);
+      setServicesFilted(res.data.data);
     });
   }, []);
   return (
     <div className='admin'>
       <div className='admin__header'>
-        <h1>Administrar Clientes</h1>
+        <h1>Administrar Services</h1>
       </div>
       <div className='admin__actions'>
         <Link to='/admin/services/create'>
-          <button>Create Cliente</button>
+          <button>Create Service</button>
         </Link>
         <input
           type='text'
           id='search'
           placeholder='Buscar...'
-          onChange={e => setClienteFilted(useFilter(clientes, e.target.value))}
+          onChange={e => setServicesFilted(useFilter(services, e.target.value))}
         />
       </div>
       <div className='admin__videos'>
@@ -72,17 +65,17 @@ function index() {
               <th>Id</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Acciones</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {clientesFilted.length > 0 ? (
-              clientesFilted.map((cliente) => (
+            {servicesFilter.length > 0 ? (
+              servicesFilter.map((cliente) => (
                 <ClienteWrapper
-                  Id={cliente.Id}
-                  Name={cliente.Name}
-                  Price={cliente.Price}
-                  key={cliente.Id}
+                  id={cliente.id}
+                  name={cliente.name}
+                  price={cliente.price}
+                  key={cliente.id}
                   handleDelete={handleDelete}
                 />
               ))
@@ -91,7 +84,7 @@ function index() {
             )}
           </tbody>
         </table>
-        {clientesFilted.length === 0 && (
+        {servicesFilter.length === 0 && (
           <h2>No hay clientes que coincidan con su busqueda</h2>
         )}
       </div>

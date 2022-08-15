@@ -1,6 +1,6 @@
-export default function useFilter(clientes: any, search: any) {
-  const result = clientes.filter((cliente: any) => {
-    return `${cliente.Name} ${cliente.Price}`
+export default function useFilter(services: any, search: any) {
+  const result = services.filter((service: any) => {
+    return `${service.name} ${service.price}`
       .toLowerCase()
       .includes(search.toLowerCase());
   });

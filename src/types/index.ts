@@ -1,5 +1,5 @@
 export type Service = {
-  Id: number;
-  Name: string;
-  Price: number;
+  id: number | string;
+  name: string;
+  price: number | string;
 };

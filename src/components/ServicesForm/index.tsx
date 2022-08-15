@@ -4,174 +4,100 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./index.scss";
+import { Service } from "~/types";
+import { SERVER_ENDPOINT } from "~/lib/config";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 function index({ type }: { type: string }) {
+  const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const { id } = useParams();
-  const [cliente, setCliente] = useState({
-    nombre: "",
-    apellido: "",
-    cedula: "",
-    telefono: "",
-    direccion: "",
-    deuda: "",
-    abono: "",
-    año: "",
-    total: "",
-    actores: []
+  const [service, setService] = useState<Service>({
+    id: "",
+    name: "",
+    price: "",
   });
-  const typeTitle = type === "create" ? "Crear Cliente" : "Editar Cliente";
+
+  const typeTitle = type === "create" ? "Create Service" : "Edit Service";
   useEffect(() => {
     if (type === "create") return;
-    // axios.get(`https://scrum-proyect.herokuapp.com/cliente/${id}`).then(res => {
-    //   const {
-    //     nombre,
-    //     apellido,
-    //     cedula,
-    //     telefono,
-    //     direccion,
-    //     deuda,
-    //     abono,
-    //     total,
-    //   } = res.data.body;
-    //   setCliente({
-    //     nombre,
-    //     apellido,
-    //     cedula,
-    //     telefono,
-    //     direccion,
-    //     deuda,
-    //     abono,
-    //     total,
-    //   });
-    // });
+    axios.get(`${SERVER_ENDPOINT}/service/${id}`).then(res => {
+      console.log(res);
+      const {
+        id,
+        name,
+        price,
+      } = res.data.data;
+      setService({
+        id: id,
+        name: name,
+        price: price,
+      });
+    });
   }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(cliente);
+    console.log(service);
     if (type === "create") {
       axios
-        .post(`https://scrum-proyect.herokuapp.com/cliente`, cliente)
+        .post(`${SERVER_ENDPOINT}/service`, {
+          Name: service.name,
+          Price: Number(service.price),
+        })
         .then(() => {
-          navigate("/");
+          navigate("/admin/services");
         });
     } else {
       axios
-        .patch(`https://scrum-proyect.herokuapp.com/cliente/${id}`, {
-          cliente: cliente,
+        .put(`${SERVER_ENDPOINT}/service/${id}`, {
+          Id: id,
+          Name: service.name,
+          Price: service.price,
         })
         .then(() => {
-          navigate("/");
+          navigate("/admin/services");
         });
     }
   };
 
   const handleChange = (e: any) => {
-    setCliente({
-      ...cliente,
+    if (e.target.name === "price") {
+      let price = Number(e.target.value);
+      if (price >= 1000) {
+        MySwal.fire({
+          title: "Error!",
+          text: "Can't be mayor than 1000",
+          icon: "error",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Ok!",
+        })
+        setService((prev) => {
+          return {
+            ...prev,
+            price: 999,
+          };
+        })
+        return;
+      }
+    }
+    setService({
+      ...service,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleChangeActores = (e: any) => {
-    const value = e.target.value.split(",");
-    setCliente({
-      ...cliente,
-      actores: value,
-    });
-  };
-
-  const handleChangeAño = (e: any) => {
-    const reg = new RegExp("^[0-9]+$");
-    if (reg.exec(e.target.value) || e.target.value == " ") {
-      setCliente({
-        ...cliente,
-        año: e.target.value,
-      });
-    }
   };
 
   return (
     <div className='AdminForm'>
       <h1>{typeTitle}</h1>
       <form onSubmit={handleSubmit}>
-        <div className='row1'>
-          <div className='nombre'>
-            <label htmlFor='nombre'>
-              Nombre
-              <input
-                type='text'
-                name='nombre'
-                placeholder=' Ej: Juan'
-                id='nombre'
-                onChange={handleChange}
-                value={cliente.nombre}
-                required
-              />
-            </label>
-          </div>
-
-          <div className='apellido'>
-            <label htmlFor='apellido'>
-              Apellido
-              <input
-                type='text'
-                name='apellido'
-                id='apellido'
-                placeholder='Ej: Pabro Duarte'
-                onChange={handleChange}
-                value={cliente.apellido}
-                required
-              />
-            </label>
-          </div>
-          <div className='cedula'>
-            <label htmlFor='cedula'>
-              Cedula
-              <input
-                type='text'
-                name='cedula'
-                id='cedula'
-                placeholder='Ej: 222-222222-2'
-                onChange={handleChange}
-                value={cliente.cedula}
-                required
-              />
-            </label>
-          </div>
-        </div>
-        <div className='row2'>
-          <div className='telefono'>
-            <label htmlFor='telefono'>
-              Telefono
-              <input
-                type='text'
-                name='telefono'
-                id='telefono'
-                placeholder='Ej: 222-222-2222'
-                onChange={handleChange}
-                value={cliente.telefono}
-                required
-              />
-            </label>
-          </div>
-
-          <div className='direccion'>
-            <label htmlFor='direccion'>
-              Dirección
-              <input
-                type='text'
-                name='direccion'
-                id='direccion'
-                placeholder='Ej: av. Principal'
-                onChange={handleChange}
-                value={cliente.direccion}
-                required
-              />
-            </label>
-          </div>
-        </div>
-
+        <input type="text" id="nombre" className="form-control" placeholder="Name" name="name" onChange={handleChange}
+          value={service.name}
+          required />
+        <input type="number" id="price" className="form-control" placeholder="Price" name="price" onChange={handleChange}
+          value={service.price}
+          required />
         <div className='buttonContainer'>
           <button type='submit'>Enviar</button>
         </div>
