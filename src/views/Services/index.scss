@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.services-contain{
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+.section1{
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr)
+}
+.section2{
+    width: 50%;
+    height: 100%;
+    background-image: url(/src/assets/img/service-fondo.png);
+    background-size:cover;
+}
+
+//----------------------SECCION 1
+
+
+    .div-servicio{
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+    .new{  
+        display: flex;
+        background-color:#000000 ;
+        border-radius: 50%;
+        color:white;
+        width: 90px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 7px;
+    }
+    .new p{
+        margin: 0;
+        font-weight: 500;
+        padding: 5px;
+    }
+    .div-servicio img{
+        width:150px;
+        border-radius: 10px 10px 0px 0px;
+    
+    }
+    .servicio2{
+        background-color: #fffefe85;
+        color:rgb(0, 0, 0);
+        font-size: 1.1rem;
+        border-radius: 1px;
+        padding:20px 40px;
+        border-bottom: #286190 50px solid;
+        box-shadow: black 0px 0px 5px 0px;
+    
+    }
+    
+    .info-service{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    
+    .info-service p{
+        margin: 0;
+        font-weight: 900;
+    }
+    
+    .info-service span{
+        margin: 0;
+        font-weight: 700;
+        color: #056724;
+    }
+    
+    .desing{
+        width: 100%;
+        height:100%;
+        background-color: #3178b3;
+        
+    }
+
+    //--------------SECCION 2
+
+    .contenido{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: white;
+        text-align: center;
+    }
+    .shadow{
+        width: 100%;
+        background-color: #00000075;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;  
+    }
+    .shadow h2{
+        font-size: 50px;
+        
+    }
+    .shadow img{
+        width:200px;
+        
+    }
+
+}
+
