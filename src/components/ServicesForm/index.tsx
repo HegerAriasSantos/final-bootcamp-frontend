@@ -92,14 +92,21 @@ function index({ type }: { type: string }) {
     <div className='AdminForm'>
       <h1>{typeTitle}</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" id="nombre" className="form-control" placeholder="Name" name="name" onChange={handleChange}
-          value={service.name}
-          required />
-        <input type="number" id="price" className="form-control" placeholder="Price" name="price" onChange={handleChange}
-          value={service.price}
-          required />
+        <div>
+          <label htmlFor="name">Name: </label>
+          <input type="text" id="nombre" className="form-control" placeholder="Name" name="name" onChange={handleChange}
+            value={service.name}
+            required />
+        </div>
+        <div>
+          <label htmlFor="price">Price: </label>
+          <input type="number" id="price" className="form-control" placeholder="Price" name="price" onChange={handleChange}
+            value={service.price}
+            required />
+        </div>
+        
         <div className='buttonContainer'>
-          <button type='submit'>Enviar</button>
+          <button type='submit'>{type === 'create' ? 'Save': 'Edit'}</button>
         </div>
       </form>
     </div>
