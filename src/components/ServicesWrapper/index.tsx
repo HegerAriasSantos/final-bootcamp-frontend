@@ -21,10 +21,10 @@ function ServicesWrapper(props: any) {
       <td>
         <div>
           <button className='delete' id={`${id}`} onClick={props.handleDelete}>
-            Borrar
+            Delete
           </button>
           <Link to={`/admin/services/edit/${id}`}>
-            <button className='edit'>Editar</button>
+            <button className='edit'>Edit</button>
           </Link>
         </div>
       </td>
