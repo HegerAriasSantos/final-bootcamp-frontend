@@ -15,7 +15,8 @@ const ServicesAdmin = lazy(() => import('~/views/ServicesAdmin'));
 const ServicesForm = lazy(() => import('~/components/ServicesForm'));
 const About = lazy(() => import('~/views/About'));
 const Bill = lazy((() => import('~/views/Bill')));
-const Invoices = lazy((() => import('~/views/Invoices')))
+const Invoices = lazy((() => import('~/views/Invoices')));
+const Shopp = lazy((() => import('~/views/ShoppingCar')));
 
 const App = () => {
   useEffect(() => {
@@ -41,7 +42,8 @@ const App = () => {
               <Route element={<ServicesForm type='edit' />} path='/admin/services/edit/:id' />
               <Route element={<ServicesForm type='create' />} path='/admin/services/create' />
               <Route element={<Bill />} path='/admin/invoice/:id' />
-              <Route element={<Register type="admin" />} path='/admin/register' />
+              <Route element={<Shopp />} path='/admin/create-invoice' />
+              <Route element={<Register type="admin" />} path='/admin/register'/>
               {/*<Route element={<Quotes />} path='/admin/quotes' />*/}
             </Route>
             {/* Protected Client routes */}

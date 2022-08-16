@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import "~/views/Bill/StyleChopp.scss"
+import "./Styles.scss"
 import logo from '~/views/Logo.png';
 
 

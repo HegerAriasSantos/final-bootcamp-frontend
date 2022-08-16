@@ -4,6 +4,7 @@ import './index.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { ROLE_USER, SERVER_ENDPOINT } from '~/lib/config';
+import { useNavigate } from 'react-router-dom';
 
 const Register = ({ type }: { type: string }) => {
   const [form, setForm] = useState({
@@ -21,6 +22,7 @@ const Register = ({ type }: { type: string }) => {
     { value: 2, label: 'Cliente' },
   ];
   const [buttonState, setButtonState] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     validateForm();
@@ -52,6 +54,7 @@ const Register = ({ type }: { type: string }) => {
       .post(uri, form)
       .then((resp) => {
         Swal.fire('Exito', 'Persona agregada con exito', 'success');
+        navigate('/login');
         console.log(resp);
       })
       .catch(() => {
