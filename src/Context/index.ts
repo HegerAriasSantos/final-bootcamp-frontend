@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import token from './Reducers/Token';
-import role from './Reducers/Role';
+import User from './Reducers/User';
 
 export const store = configureStore({
   reducer: {
-    token,
-    role,
+    User,
   },
 });
 

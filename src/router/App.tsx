@@ -4,7 +4,6 @@ import UserRoutes from './UserRoute';
 import Layout from './Layout';
 import { lazy, Suspense, useEffect } from 'react';
 import Loading from '~/views/Loading';
-import Quotes from '~/views/Quotes';
 
 const Home = lazy(() => import('~/views/Home'));
 const NotFound = lazy(() => import('~/views/NotFound'));
@@ -15,8 +14,9 @@ const ServicesAdmin = lazy(() => import('~/views/ServicesAdmin'));
 const ServicesForm = lazy(() => import('~/components/ServicesForm'));
 const About = lazy(() => import('~/views/About'));
 const Bill = lazy((() => import('~/views/Bill')));
-const Invoices = lazy((() => import('~/views/Invoices')));
-const Shopp = lazy((() => import('~/views/ShoppingCar')));
+const Invoices = lazy((() => import('~/views/Invoices')))
+const Quotes = lazy((() => import('~/views/Quotes')))
+const QuotesAdmin = lazy((() => import('~/views/QuotesAdmin')))
 
 const App = () => {
   useEffect(() => {
@@ -26,6 +26,7 @@ const App = () => {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
+
           {/* layout */}
           <Route path='/' element={<Layout />}>
             <Route element={<Home />} path='/' />
@@ -33,7 +34,6 @@ const App = () => {
             <Route element={<Services />} path='/services' />
             <Route element={<Register type="user" />} path='/register' />
             <Route element={<Login />} path='/login' />
-            <Route element={<Quotes />} path='/quotes' />
 
             {/* Protected Admin routes */}
             <Route path='/' element={<AdminRoutes />}>
@@ -42,12 +42,13 @@ const App = () => {
               <Route element={<ServicesForm type='edit' />} path='/admin/services/edit/:id' />
               <Route element={<ServicesForm type='create' />} path='/admin/services/create' />
               <Route element={<Bill />} path='/admin/invoice/:id' />
-              <Route element={<Shopp />} path='/admin/create-invoice' />
-              <Route element={<Register type="admin" />} path='/admin/register'/>
-              {/*<Route element={<Quotes />} path='/admin/quotes' />*/}
+              <Route element={<Register type="admin" />} path='/admin/register' />
+              <Route element={<QuotesAdmin />} path='/admin/quote' />
             </Route>
+
             {/* Protected Client routes */}
             <Route path='/' element={<UserRoutes />}>
+              <Route element={<Quotes />} path='/user/quote' />
               <Route element={<Home />} path='/user' />
             </Route>
             <Route element={<NotFound />} path='*' />

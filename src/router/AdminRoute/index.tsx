@@ -4,8 +4,8 @@ import { RootState } from '~/Context';
 import { ROLE_ADMIN } from '~/lib/config';
 
 const useAuth = () => {
-  const token = useSelector((state: RootState) => state.token.value);
-  const Role = useSelector((state: RootState) => state.role.value);
+  const token = useSelector((state: RootState) => state.User.value?.token);
+  const Role = useSelector((state: RootState) => state.User.value?.role);
   return token && Role === ROLE_ADMIN;
 };
 

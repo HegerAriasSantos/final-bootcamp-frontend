@@ -2,20 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "~/Context";
-import { deleteRole } from "~/Context/Reducers/Role";
-import { deleteToken } from "~/Context/Reducers/Token";
+import { deleteUser } from "~/Context/Reducers/User";
 import { ROLE_ADMIN, ROLE_USER } from "~/lib/config";
 
 const Links = () => {
   const location = useLocation();
-  const token = useSelector((state: RootState) => state.token.value);
-  const role = useSelector((state: RootState) => state.role.value);
+  const token = useSelector((state: RootState) => state.User.value?.token);
+  const role = useSelector((state: RootState) => state.User.value?.role);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const handleSignOut = () => {
-    dispatch(deleteToken());
-    dispatch(deleteRole());
-    navigate('/login');
+    dispatch(deleteUser());
   }
   if (token && role === ROLE_ADMIN) {
     return (
