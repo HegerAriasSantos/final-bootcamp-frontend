@@ -30,7 +30,7 @@ const Login = () => {
     const userObj = { Email, Password };
     axios
       .post(uri, userObj)
-      .then((resp) => {
+      .then((resp:any) => {
         console.log(resp.data);
         const user: User = {
           id: resp.data.data.PersonId,

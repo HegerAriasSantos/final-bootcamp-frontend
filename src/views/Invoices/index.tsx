@@ -7,7 +7,7 @@ function InvoicesList() {
   return (
     <>
       <div className="container">
-        <Table responsive >
+        <Table responsive="lg" striped bordered>
           <thead>
             <tr className='table-primary'>
               <th>Nombre de cliente</th>

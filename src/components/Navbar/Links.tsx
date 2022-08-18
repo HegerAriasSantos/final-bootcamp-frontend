@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "~/Context";
 import { deleteUser } from "~/Context/Reducers/User";
 import { ROLE_ADMIN, ROLE_USER } from "~/lib/config";
