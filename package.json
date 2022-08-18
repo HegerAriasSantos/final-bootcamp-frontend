@@ -37,7 +37,6 @@
     "vite-react-ts-eslint-prettier": "file:"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/react": "^18.0.9",
     "@types/react-big-calendar": "^0.38.1",
     "@types/react-dom": "^18.0.5",

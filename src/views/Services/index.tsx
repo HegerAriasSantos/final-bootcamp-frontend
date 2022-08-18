@@ -1,10 +1,15 @@
-import Boy from '~/assets/img/2.png'
+//import Boy from '~/assets/img/2.png'
+import { useEffect, useState } from 'preact/hooks';
 import silla from '~/assets/img/barbero-png.png'
-import Degradado2 from '~/assets/img/3.png'
-import Degradado3 from '~/assets/img/4.png'
-
-
+import Axios from 'axios';
+//import Degradado2 from '~/assets/img/3.png'
+// Degradado3 from '~/assets/img/4.png'
 import './index.scss';
+
+const [serviceList, setServiceList] = useState();
+// useEffect(()=>{
+  
+// })
 
 const Services = () => {
   return (
@@ -43,4 +48,10 @@ const Services = () => {
     </div>
   );
 }
+
+
+const ServicesCart = () =>{
+
+}
+
 export default Services;
