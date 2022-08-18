@@ -12,7 +12,8 @@
     .section1{
         width: 50%;
         display: grid;
-        grid-template-columns: repeat(2,1fr)
+        grid-template-columns: repeat(2,1fr);
+        margin: auto;
     }
     .section2{
         width: 50%;
@@ -46,11 +47,10 @@
         font-weight: 500;
         padding: 5px;
     }
-    .div-servicio img{
-        width:150px;
-        border-radius: 10px 10px 0px 0px;
-    
-    }
+    // .div-servicio img{
+    //     width:150px;
+    //     border-radius: 10px 10px 0px 0px;   
+    // }
     .servicio2{
         background-color: #fffefe85;
         color:rgb(0, 0, 0);
