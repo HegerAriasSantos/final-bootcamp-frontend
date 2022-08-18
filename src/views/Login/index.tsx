@@ -6,8 +6,8 @@ import axios from 'axios';
 import './index.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { modifyToken } from '~/Context/Reducers/Token';
-import { modifyRole } from '~/Context/Reducers/Role';
+import { modifyUser } from '~/Context/Reducers/User';
+import { User } from '~/types';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -32,8 +32,12 @@ const Login = () => {
       .post(uri, userObj)
       .then((resp) => {
         console.log(resp.data);
-        dispatch(modifyToken(resp.data.data.token));
-        dispatch(modifyRole(resp.data.data.rolPerson));
+        const user: User = {
+          token: resp.data.data.token,
+          role: resp.data.data.rolPerson,
+          name: resp.data.data.personName,
+        }
+        dispatch(modifyUser(user));
         navigate('/');
       })
       .catch(() => {
