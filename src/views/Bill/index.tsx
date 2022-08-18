@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./Style.scss"
-import logo from '~/assets/img/barbero.jpeg';
+import logo from '~/assets/img/barbero.png';
 import { useParams } from "react-router";
 import Print from "~/assets/icons/Print";
 

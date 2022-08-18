@@ -30,7 +30,7 @@ const Login = () => {
     const userObj = { Email, Password };
     axios
       .post(uri, userObj)
-      .then((resp) => {
+      .then((resp:any) => {
         console.log(resp.data);
         dispatch(modifyToken(resp.data.data.token));
         dispatch(modifyRole(resp.data.data.rolPerson));

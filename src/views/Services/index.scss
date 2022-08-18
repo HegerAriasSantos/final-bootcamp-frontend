@@ -9,19 +9,19 @@
     flex-direction: row;
     width: 100%;
 
-.section1{
-    width: 50%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr)
-}
-.section2{
-    width: 50%;
-    height: 100%;
-    background-image: url(/src/assets/img/service-fondo.png);
-    background-size:cover;
-}
+    .section1{
+        width: 50%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr)
+    }
+    .section2{
+        width: 50%;
+        height: 100%;
+        background-image: url(/src/assets/img/service-fondo.png);
+        background-size:cover;
+    }
 
-//----------------------SECCION 1
+    //----------------------SECCION 1
 
 
     .div-servicio{

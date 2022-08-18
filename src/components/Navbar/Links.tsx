@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "~/Context";
 import { deleteRole } from "~/Context/Reducers/Role";
 import { deleteToken } from "~/Context/Reducers/Token";
@@ -11,9 +11,11 @@ const Links = () => {
   const token = useSelector((state: RootState) => state.token.value);
   const role = useSelector((state: RootState) => state.role.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSignOut = () => {
     dispatch(deleteToken());
     dispatch(deleteRole());
+    navigate('/login');
   }
   if (token && role === ROLE_ADMIN) {
     return (
@@ -22,7 +24,7 @@ const Links = () => {
         <li><Link to="/admin/invoice" className={location.pathname == "/admin/invoice" ? "active" : ""} >Invoices</Link></li>
         <li><Link to="/admin/services" className={location.pathname.includes("/admin/services") ? "active" : ""} >Services</Link></li>
         <li><Link to="/admin/quote" className={location.pathname == "/admin/quote" ? "active" : ""}>Quotes</Link></li>
-        <li><Link to="/admin/register" className={location.pathname == "/admin/quote" ? "active" : ""}>Create User</Link></li>
+        <li><Link to="/admin/register" className={location.pathname == "/admin/register" ? "active" : ""}>Create User</Link></li>
         <li><a onClick={handleSignOut} href="#" >Sign out</a></li>
       </ul>
     )
