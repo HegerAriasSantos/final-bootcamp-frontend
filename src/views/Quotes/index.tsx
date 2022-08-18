@@ -30,6 +30,7 @@ export default function CreateEventWithNoOverlap({
   dayLayoutAlgorithm = 'no-overlap',
 }) {
   const username = useSelector((state: RootState) => state.User.value?.name);
+  const userId = useSelector((state: RootState) => state.User.value?.id) ?? -1;
   const [myEvents, setEvents] = useState(events)
 
   const handleSelectSlot =
@@ -53,7 +54,7 @@ export default function CreateEventWithNoOverlap({
 
       const title = username;
       if (title) {
-        setEvents((prev) => [...prev, { start, end, title, id: 1 }])
+        setEvents((prev) => [...prev, { start, end, title, id: userId }])
       }
     }
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function CreateEventWithNoOverlap({
   }, [myEvents])
 
   const handleSelectEvent = useCallback(
-    (event: any) => window.alert(event.title),
+    (event: any) => alert(event.title),
     []
   )
 

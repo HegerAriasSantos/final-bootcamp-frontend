@@ -4,6 +4,7 @@ export type Service = {
   price: number | string;
 };
 export type User = {
+  id: number;
   token: string;
   name: string;
   role: number;

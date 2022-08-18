@@ -33,6 +33,7 @@ const Login = () => {
       .then((resp) => {
         console.log(resp.data);
         const user: User = {
+          id: resp.data.data.PersonId,
           token: resp.data.data.token,
           role: resp.data.data.rolPerson,
           name: resp.data.data.personName,
