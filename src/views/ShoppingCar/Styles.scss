@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.shopp-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.shopp-contain p{
+    
+    background-color: #1D79C4;
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 900;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+.lis-form{
+    display: flex;
+    justify-content:left;
+    margin-bottom: 20px;
+    
+}
+
+
+.lis-form input{
+    appearance: none;
+    color: #1D1D1D;
+    font-family: “Helvetica”, arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ECF0F1;
+    background:#cbd1d3;
+    padding: 8px 40px;
+    display: inline-block;
+    visibility: visible;
+    width: 140px;
+ }
+
+
+ 
+ .lis-form p{
+    margin-right: 20px;
+      
+  }
+
+table{
+    border-collapse: collapse;
+}
+
+  .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .Thead-shop{
+
+  }
+  th,
+  td {
+      border-collapse: collapse;
+      
+  }
+  .Thead-shop th{
+    background-color: #1D79C4;
+    border: none;
+    padding: 10px 30px;
+    color: white;
+    
+   }
+
+   .tbody-shop td{
+    background-color: #ffffff00;
+    padding: 10px 30px;
+    color: rgb(0, 0, 0);
+    border-bottom: white solid 1px;
+    margin: 0;
+
+
+   }
+
+   .conain-general{
+    display: flex;
+    background-color: #f6f9fa;
+   }

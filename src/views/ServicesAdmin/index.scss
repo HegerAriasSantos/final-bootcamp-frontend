@@ -1,0 +1,109 @@
+.admin {
+  width: 100%;
+  height: 100%;
+  background-color: #e1dddc;
+  display: flex;
+  color: #d7d7d7;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  &__header {
+    width: 100%;
+    text-align: start;
+    background-color: #034881;
+    color: #fff;
+    h1 {
+      margin: 5px 20px;
+    }
+  }
+  &__actions {
+    display: flex;
+    width: 100%;
+    height: 120px;
+    a {
+      align-self: flex-start;
+      margin: 30px;
+      button {
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 12px;
+        background-color: #004d78;
+        color: #f5f5f5;
+        cursor: pointer;
+      }
+    }
+    input {
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      margin-left: calc(44% - 200px);
+      border: 1px solid;
+      border-radius: 12px;
+      height: 25px;
+      align-self: center;
+      width: 300px;
+      padding: 1rem 1rem;
+      outline: none;
+    }
+  }
+  &__videos {
+    table {
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      margin: auto;
+      width: 100vw;
+      border-spacing: 2px;
+      th {
+        background-color: #007dc3;
+        color: #fff;
+        padding: 10px;
+      }
+      tbody {
+        td {
+          padding: 10px;
+          background-color: #e3e3e3;
+          color: #000;
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+          }
+          button {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .delete {
+            background-color: #ad003a;
+          }
+          .edit {
+            background-color: #0175aa;
+          }
+          .abono {
+            background-color: #28ab00;
+          }
+          img {
+            overflow: hidden;
+            border-radius: 10px;
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+h2 {
+  text-align: center;
+  margin: 100px;
+  color: #000;
+}
